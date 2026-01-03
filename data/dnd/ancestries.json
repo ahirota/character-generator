@@ -1,0 +1,44 @@
+{
+    "human": {
+        "ancestry_name": "Human",
+        "type": "Humanoid",
+        "size": {
+            "count": 1,
+            "options": ["MEDIUM", "SMALL"]
+        },
+        "speed": 30,
+        "special_traits": [
+            {
+                "name": "Resourceful",
+                "description": "You gain Heroic Inspiration whenever you finish a Long Rest.",
+                "trait": {
+                    "type": "static",
+                    "subtype": "action",
+                    "timing": "special",
+                    "name": "Heroic Inspiration",
+                    "description": "If you (a player character) have Heroic Inspiration, you can expend it to reroll any die immediately after rolling it, and you must use the new roll."
+                }
+            },
+            {
+                "name": "Skillful",
+                "description": "You gain proficiency in one skill of your choice.",
+                "trait": {
+                    "type": "selection",
+                    "subtype": "proficiency",
+                    "count": 1,
+                    "options": "PROFICIENCY_LIST"
+                }
+            },
+            {
+                "name": "Versatile",
+                "description": "You gain an Origin feat of your choice",
+                "trait": {
+                    "type": "selection",
+                    "subtype": "feat",
+                    "count": 1,
+                    "options": "FEAT_LIST"
+                }
+            }
+        ]
+    }
+}
