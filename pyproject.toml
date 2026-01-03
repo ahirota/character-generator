@@ -1,0 +1,9 @@
+[project]
+name = "character-generator"
+version = "0.1.0"
+description = "Small Python Command-Line tool to generate and print out a character for various fantasy types."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "inquirerpy>=0.3.4",
+]
