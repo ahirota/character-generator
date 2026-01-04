@@ -1,12 +1,8 @@
 import random
 from InquirerPy import inquirer
 from InquirerPy.base.control import Choice
-from dnd.dnd_consts import Abilities
 
 def setup_hero_stat_array(hero):
-    # Initialize Stats
-    hero.stats = generate_baseline_stats()
-
     # Ask for Choice, Random Array or Standard Array
     choice = inquirer.select(
         message="Would you like to use the standard stat array, or generate one with the 4d6 drop lowest method?",
@@ -25,13 +21,7 @@ def setup_hero_stat_array(hero):
     print("Your Stat Array is as follows:")
     print(array)
 
-    # If Stat Array is poorly rolled, ask for reroll
-    # if sum(array) < 60:
-    #     print("Looks Rough, do you want to reroll these?")
-    #     move_on = False
-    #     while not move_on:
-    #         break
-
+    # Loop through and assign 
     for key,value in hero.stats["ability_scores"].items():
         index = inquirer.select(
             message=f"Please assign a value for {key}",
@@ -40,18 +30,6 @@ def setup_hero_stat_array(hero):
         value["sources"].append({"source": "Base Stat Array","val": array[index]})
         del array[index]
     return
-
-
-def generate_baseline_stats():
-    baseline_stats = {
-        "hit_points": 0,
-        "armor_class": 0,
-        "initiative": 0,
-        "ability_scores": {},
-    }
-    for ability in Abilities:
-        baseline_stats["ability_scores"].update({ability.name: {"total": 0, "bonus": 0, "sources":[]}})
-    return baseline_stats 
 
 def get_standard_array():
     return [15, 14, 13, 12, 10, 8]
@@ -64,7 +42,5 @@ def get_rolled_array():
 
 def four_d6_drop_lowest():
     statrolls = [random.randint(1,6), random.randint(1,6), random.randint(1,6), random.randint(1,6)]
-    print(statrolls)
     statrolls.remove(min(statrolls))
-    print(statrolls)
     return sum(statrolls)

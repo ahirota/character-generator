@@ -1,5 +1,5 @@
 # Character Generator
-Small Python Command-Line tool to generate and print out a character for various fantasy types.
+Small Python Command-Line tool to generate a few options for your next character.
 
 Currently supported themes/games:
 - Dungeons and Dragons
@@ -11,16 +11,11 @@ Uses the `InquirerPy` package to drive an interactive series of command-line pro
 Reads from a JSON File and randomly selects a first name and last name from the list. Additional parameters can be chosen to filter and narrow down a name.
 
 ### Dungeons and Dragons Specific Setup
-Dungeons and Dragons (DnD) characters have a variety of parameters to set up and select. This tool guides you through that process, but can also randomly select from the available options (read via JSON Files). This setup follows the 2024 Player's Handbook Step by Step Guide and auto populates some things based on your choices.
+Utilizing JSON Files, the DnD Generator will output a few options for your next character with minimal detail.
 
-These include:
-- Class (and potentially Sub-class)
-- Origin (Background, Equipment, Ancestry)
-- Ability Scores
-- Alignment
-- Other Details
-
-From your choices, the tool will provide you with a basic character sheet overview of your DnD Hero.
+Character details will be formatted as, and hopefully this can serve as a jumping off point for your next 
+{NAME} | Level 1 {ANCESTRY} {CLASS}, with the {ORIGIN} Background.
+{STAT_ARRAY}
 
 ## Running this Project
 To run this project, please follow the steps below. Make sure you have the prerequisites and then follow the step by step
@@ -44,5 +39,8 @@ Feel free to reach out to me:
 - Discord: @neinhearted
 
 ## Road Map
-[ ] Finish DnD Generator
-[ ] Add additional parameters for filtering and generating a name
+- [ ] Refactor for Smaller Scope (Was a bit ambitious the first go around)
+- [ ] Class Picker/Generator
+- [ ] Origin Picker/Generator
+- [ ] Feat Picker/Generator
+- [ ] Add additional parameters for filtering and generating a name
