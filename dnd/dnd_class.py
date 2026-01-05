@@ -2,9 +2,11 @@ import os, json, random, sys
 from InquirerPy import inquirer
 from InquirerPy.base.control import Choice
 
-def setup_hero_class(hero, filename="data/dnd/classes.json", **kwargs):
+DND_CLASS_FILE_PATH = "data/dnd/classes.json"
+
+def get_class_data():
     try:
-        filepath = os.path.abspath(filename)
+        filepath = os.path.abspath(DND_CLASS_FILE_PATH)
         with open(filepath, "r") as file:
             class_list = json.load(file)
     except Exception as e:
@@ -12,27 +14,35 @@ def setup_hero_class(hero, filename="data/dnd/classes.json", **kwargs):
         print(e)
         print('We\'re sorry, Exiting Application Now.')
         sys.exit(1)
+    return class_list
 
-    # Ask for Choice, Random Array or Standard Array
-    choice = inquirer.select(
-        message="Would you like to pick your class, or select one randomly?",
-        choices=[
-            Choice(value=True, name="I'll pick"),
-            Choice(value=False, name="Random please"),
-        ],
-    ).execute()
+def select_hero_class(guided=True):
+    # Load Class Data
+    class_list = get_class_data()
 
-    if choice:
-        dnd_class = inquirer.select(
-            message=f"Please pick a class",
-            choices=list(map(lambda x: Choice(value=x, name=x.name), class_list)),
+    # Guided Class Selection
+    if (guided):
+        # Prompt User for choice
+        choice = inquirer.select(
+            message="Would you like to choose your class, or select one randomly?",
+            choices=[
+                Choice(value=True, name="I'll choose."),
+                Choice(value=False, name="Random please."),
+            ],
         ).execute()
+
+        # Get Class or Randomize
+        if choice:
+            dnd_class = inquirer.select(
+                message="Please choose a class",
+                choices=list(map(lambda x: Choice(value=x, name=x.name), class_list)),
+            ).execute()
+        else:
+            dnd_class = get_random_class(class_list)
+    # Random Class Selection
     else:
         dnd_class = get_random_class(class_list)
-
-    print("Your Class is:")
-    print(dnd_class.name)
-    
+    return dnd_class
     
 def get_random_class(classes):
     return classes[random.randrange(len(classes))]

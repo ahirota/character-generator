@@ -1,6 +1,5 @@
-from dnd.dnd_class import setup_hero_class
-from dnd.dnd_origin import setup_hero_class
-from dnd.dnd_ability_scores import setup_hero_stat_array
+from dnd.dnd_class import select_hero_class
+from dnd.dnd_ability_scores import generate_hero_ability_scores
 
 
 class DndHero():
@@ -18,12 +17,12 @@ class DndHero():
 
     # Guide User through Picking Parameters
     def guided_generate_self(self):
-        pass
+        self.dnd_class = select_hero_class()
 
     # Generate random parameters
     # Smart build flag will use weights to skew choices towards synergistic options
     def random_generate_self(self, smart_build_flag = False):
-        pass
+        self.dnd_class = select_hero_class(guided=False)
 
     # Describes Character based on properties
     def self_one_liner(self):

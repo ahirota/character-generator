@@ -2,7 +2,9 @@ import random
 from InquirerPy import inquirer
 from InquirerPy.base.control import Choice
 
-def setup_hero_stat_array(hero):
+from dnd_consts import Abilities
+
+def generate_hero_ability_scores():
     # Ask for Choice, Random Array or Standard Array
     choice = inquirer.select(
         message="Would you like to use the standard stat array, or generate one with the 4d6 drop lowest method?",
@@ -14,22 +16,28 @@ def setup_hero_stat_array(hero):
 
     # Get Stat Arrays
     if choice:
-        array = get_standard_array()
+        ability_score_array = get_standard_array()
     else:
-        array = get_rolled_array()
+        ability_score_array = get_rolled_array()
 
     print("Your Stat Array is as follows:")
-    print(array)
+    print(ability_score_array)
+
+    # Initialize Ability Score Dict
+    ability_scores = {}
+    for stat in Abilities:
+        ability_scores[stat] = 0
 
     # Loop through and assign 
-    for key,value in hero.stats["ability_scores"].items():
+    for key in ability_scores:
         index = inquirer.select(
             message=f"Please assign a value for {key}",
-            choices=list(map(lambda x: Choice(value=array.index(x), name=str(x)), array)),
+            choices=list(map(lambda x: Choice(value=ability_score_array.index(x), name=str(x)), ability_score_array)),
         ).execute()
-        value["sources"].append({"source": "Base Stat Array","val": array[index]})
-        del array[index]
-    return
+        ability_scores[key] = ability_score_array[index]
+        del ability_score_array[index]
+
+    return ability_scores
 
 def get_standard_array():
     return [15, 14, 13, 12, 10, 8]
