@@ -2,7 +2,7 @@ import random
 from InquirerPy import inquirer
 from InquirerPy.base.control import Choice
 
-from dnd_consts import Abilities
+from dnd.dnd_consts import Abilities
 
 def generate_hero_ability_scores(guided=True, **kwargs):
     # Ask for Choice, Random Array or Standard Array
