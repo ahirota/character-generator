@@ -16,12 +16,12 @@ def get_class_data():
         sys.exit(1)
     return class_list
 
-def select_hero_class(guided=True):
+def select_hero_class(**kwargs):
     # Load Class Data
-    class_list = get_class_data()
+    class_dict = get_class_data()
 
     # Guided Class Selection
-    if (guided):
+    if (kwargs["guided"]):
         # Prompt User for choice
         choice = inquirer.select(
             message="Would you like to choose your class, or select one randomly?",
@@ -33,17 +33,20 @@ def select_hero_class(guided=True):
 
         # Get Class or Randomize
         if choice:
-            class_choices = list(map(lambda x: Choice(value=x, name=x.name), class_list))
-            dnd_class = inquirer.select(
+            class_choices = []
+            for k,v in class_dict.items():
+                class_choices.append(Choice(value=k, name=v["class_name"]))
+            key = inquirer.select(
                 message="Please choose a class",
                 choices=class_choices,
             ).execute()
+            dnd_class = class_dict[key]
         else:
-            dnd_class = get_random_class(class_list)
+            dnd_class = get_random_class(class_dict)
     # Random Class Selection
     else:
-        dnd_class = get_random_class(class_list)
+        dnd_class = get_random_class(class_dict)
     return dnd_class
     
-def get_random_class(classes):
-    return classes[random.randrange(len(classes))]
+def get_random_class(class_dict):
+    return class_dict[random.choice(list(class_dict))]

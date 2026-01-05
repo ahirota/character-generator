@@ -5,12 +5,12 @@ def generate_random_name(filename="data/names/fantasy_names.json", **kwargs):
     try:
         filepath = os.path.abspath(filename)
         with open(filepath, "r") as file:
-            json_list = json.load(file)
+            names_dict = json.load(file)
     except Exception as e:
         print('An Error Ocurred when trying to load Name Data:')
         print(e)
         print('We\'re sorry, Exiting Application Now.')
         sys.exit(1)
-    firsts = json_list["first_names"]
-    lasts = json_list["last_names"]
+    firsts = names_dict["first_names"]
+    lasts = names_dict["last_names"]
     return f"{random.choice(firsts)} {random.choice(lasts)}"

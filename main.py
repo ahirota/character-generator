@@ -27,10 +27,10 @@ def main():
     # Random Name Generator
     if (generator_type == 0):
         name = generate_random_name()
-        print(f"Here's your random fantasy name:")
-        separator = "+" + "".join(["-" for char in range(len(name))]) + "+"
+        print(f"Here's your random fantasy name:\n\n")
+        separator = "+-" + "".join(["-" for char in range(len(name))]) + "-+"
         print(separator)
-        print(f"|{name}|")
+        print(f"| {name} |")
         print(separator)
 
     # DnD Character Generator Start
@@ -65,7 +65,7 @@ def main():
 
             print(f"Okay {name}, let's get you set up.")
             hero = DndHero(name)
-            hero.guided_generate_self()
+            hero.populate_self(guided_flag=True, smart_flag=False)
 
         # Random Setup Start
         else:
@@ -83,7 +83,7 @@ def main():
 
 
             # Smart Flag Check, Will weight choices towards synergistic options
-            smart_build_flag = inquirer.confirm(message=f"Do you want {'your character' if setup_flag == 1 else 'these characters'} built smartly?\nSmart characters will be weighted towards syngeristic options.", default=True).execute()
+            smart_flag = inquirer.confirm(message=f"Do you want {'your character' if setup_flag == 1 else 'these characters'} built smartly?\nSmart characters will be weighted towards syngeristic options.", default=True).execute()
             
             # Save hero options
             hero_options = []
@@ -93,7 +93,7 @@ def main():
             for i in range(character_gen_count):
                 name = generate_random_name()
                 hero = DndHero(name)
-                hero.random_generate_self(smart_build_flag)
+                hero.populate_self(guided_flag=False, smart_flag=smart_flag)
                 hero_options.append(hero)
             
             # Start Loop for choosing hero from options

@@ -1,4 +1,5 @@
 from dnd.dnd_class import select_hero_class
+from dnd.dnd_origin import select_hero_origin
 from dnd.dnd_ability_scores import generate_hero_ability_scores
 
 
@@ -15,14 +16,13 @@ class DndHero():
     def short_representation(self):
         return f"{self.name} - {self.origin["ancestry"]["name"]} {self.dnd_class["name"]}"
 
-    # Guide User through Picking Parameters
-    def guided_generate_self(self):
-        self.dnd_class = select_hero_class()
-
-    # Generate random parameters
-    # Smart build flag will use weights to skew choices towards synergistic options
-    def random_generate_self(self, smart_build_flag = False):
-        self.dnd_class = select_hero_class(guided=False)
+    # Populate Self
+    def populate_self(self, guided_flag=True, smart_flag=False):
+        kwargs = {"guided":guided_flag, "smart_flag":smart_flag}
+        self.dnd_class = select_hero_class(**kwargs)
+        kwargs["stat_filter"] = self.dnd_class["primary_ability"]
+        kwargs["class"] = self.dnd_class["class_name"]
+        self.origin = select_hero_origin(**kwargs)
 
     # Describes Character based on properties
     def self_one_liner(self):
