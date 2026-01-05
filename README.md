@@ -11,11 +11,15 @@ Uses the `InquirerPy` package to drive an interactive series of command-line pro
 Reads from a JSON File and randomly selects a first name and last name from the list. Additional parameters can be chosen to filter and narrow down a name.
 
 ### Dungeons and Dragons Specific Setup
-Utilizing JSON Files, the DnD Generator will output a few options for your next character with minimal detail.
+Utilizing JSON Files, the DnD Generator will output a few options for your next character with a few key details. Options for generating a "smart" base stat array are also available.
 
-Character details will be formatted as, and hopefully this can serve as a jumping off point for your next 
-{NAME} | Level 1 {ANCESTRY} {CLASS}, with the {ORIGIN} Background.
-{STAT_ARRAY}
+Character details will be formatted as below, and hopefully this can serve as a jumping off point for your next DnD Hero
+`{NAME} | Level 1 {ANCESTRY_OPTION}{ANCESTRY} {CLASS}, with the {ORIGIN} Background.`
+```
+| Base Stats | STR | DEX | CON | INT | WIS | CHA |
+|------------|-----|-----|-----|-----|-----|-----|
+|            |     |     |     |     |     |     |
+```
 
 ## Running this Project
 To run this project, please follow the steps below. Make sure you have the prerequisites and then follow the step by step

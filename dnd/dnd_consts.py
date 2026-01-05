@@ -1,9 +1,5 @@
 from enum import Enum
 
-STARTING_PROFICIENCY = 2
-
-ARTISANS_TOOLS = ["CARPENTER","LEATHERWORKER","MASON","POTTER","SMITH","TINKER","WEAVER","WOODCARVER"]
-
 class Abilities(Enum):
     STR = "STR"
     DEX = "DEX"
@@ -11,3 +7,10 @@ class Abilities(Enum):
     INT = "INT"
     WIS = "WIS"
     CHA = "CHA"
+
+ALIGNMENTS = {
+    "ETHICAL":["LAWFUL", "NEUTRAL", "CHAOTIC"],
+    "MORAL":["GOOD", "NEUTRAL", "EVIL"]
+}
+
+MORAL_WEIGHTS = [20, 10, 1]

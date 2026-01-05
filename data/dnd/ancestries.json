@@ -1,44 +1,47 @@
 {
+    "aasimar": {
+        "ancestry_name": "Aasimar",
+        "traits": ["Celestial Resistance", "Darkvision", "Healing Hands", "Light Bearer", "Celestial Revelation"]
+    },
+    "dragonborn": {
+        "ancestry_name": "Dragonborn",
+        "traits": ["Dragon Ancestry", "Breath Weapon", "Damage Resistance", "Darkvision", "Draconic Flight"],
+        "optional_type": ["Black","Blue", "Brass", "Bronze", "Copper", "Gold", "Green", "Red", "Silver", "White"]
+    },
+    "dwarf": {
+        "ancestry_name": "Dwarf",
+        "traits": ["Darkvision", "Dwarven Resilience", "Dwarven Toughness", "Stonecunning"]
+    },
+    "elf": {
+        "ancestry_name": "Elf",
+        "traits": ["Darkvision", "Elven Lineage", "Fey Ancestry", "Keen Senses", "Trance"],
+        "optional_type": ["Drow", "High", "Wood"]
+    },
+    "gnome": {
+        "ancestry_name": "Gnome",
+        "traits": ["Darkvision", "Gnomish Cunning", "Gnomish Lineage"],
+        "optional_type": ["Forest", "Rock"]
+    },
+    "goliath": {
+        "ancestry_name": "Goliath",
+        "traits": ["Giant Ancestry", "Large Form", "Powerful Build"],
+        "optional_type": ["Cloud Giant","Fire Giant", "Frost Giant", "Hill Giant", "Stone Giant", "Storm Giant"]
+    },
+    "halfling": {
+        "ancestry_name": "Halfling",
+        "traits": ["Brave", "Halfling Nimbleness", "Luck", "Naturally Stealthy"]
+    },
     "human": {
         "ancestry_name": "Human",
-        "type": "Humanoid",
-        "size": {
-            "count": 1,
-            "options": ["MEDIUM", "SMALL"]
-        },
-        "speed": 30,
-        "special_traits": [
-            {
-                "name": "Resourceful",
-                "description": "You gain Heroic Inspiration whenever you finish a Long Rest.",
-                "trait": {
-                    "type": "static",
-                    "subtype": "action",
-                    "timing": "special",
-                    "name": "Heroic Inspiration",
-                    "description": "If you (a player character) have Heroic Inspiration, you can expend it to reroll any die immediately after rolling it, and you must use the new roll."
-                }
-            },
-            {
-                "name": "Skillful",
-                "description": "You gain proficiency in one skill of your choice.",
-                "trait": {
-                    "type": "selection",
-                    "subtype": "proficiency",
-                    "count": 1,
-                    "options": "PROFICIENCY_LIST"
-                }
-            },
-            {
-                "name": "Versatile",
-                "description": "You gain an Origin feat of your choice",
-                "trait": {
-                    "type": "selection",
-                    "subtype": "feat",
-                    "count": 1,
-                    "options": "FEAT_LIST"
-                }
-            }
-        ]
+        "traits": ["Resourceful", "Skillful", "Versatile"]
+    },
+    "orc": {
+        "ancestry_name": "Orc",
+        "traits": ["Adrenaline Rush", "Darkvision", "Relentless Endurance"]
+    },
+    "tiefling": {
+        "ancestry_name": "Tiefling",
+        "traits": ["Darkvision", "Fiendish Legacy", "Otherworldly Presence"],
+        "optional_type": ["Abyssal", "Chthonic", "Infernal"]
     }
 }

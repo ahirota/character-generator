@@ -1,21 +1,82 @@
 {
+    "acolyte" : {
+        "primary_ability": ["INT", "WIS", "CHA"],
+        "background_name":"Acolyte",
+        "feat":"Magic Initiate (Cleric)"
+    },
     "artisan" : {
+        "primary_ability": ["STR", "DEX", "INT"],
         "background_name":"Artisan",
-        "feat": "CRAFTER",
-        "primary_ability": "STR",
-        "saving_throw_proficiencies":["STR", "CON"],
-        "skill_proficiencies": ["INVESTIGATION", "PERSUASION"],
-        "tool_proficiencies": {
-            "type":"selection",
-            "subtype":"proficiency",
-            "count": 1,
-            "options": "ARTISANS_TOOLS"
-        },
-        "starting_equipment": {
-            "type":"selection",
-            "count": 1,
-            "options":[["Artisan's Tools", "2 Pouches", "Traveler's Clothes", "32GP"], ["50GP"]]
-        },
-        "description": "You began mopping floors and scrubbing counters in an artisan's workshop for a few coppers per day as soon as you were strong enough to carry a bucket. When you were old enough to apprentice, you learned to create basic crafts of your own, as well as how to sweet-talk the occasional demanding customer. Your trade has also given you a keen eye for detail."
+        "feat":"Crafter"
+    },
+    "charlatan" : {
+        "primary_ability": ["DEX", "CON", "CHA"],
+        "background_name":"Charlatan",
+        "feat":"Skilled"
+    },
+    "criminal" : {
+        "primary_ability": ["DEX", "CON", "INT"],
+        "background_name":"Criminal",
+        "feat":"Alert"
+    },
+    "entertainer" : {
+        "primary_ability": ["STR", "DEX", "CHA"],
+        "background_name":"Entertainer",
+        "feat":"Musician"
+    },
+    "farmer" : {
+        "primary_ability": ["STR", "CON", "WIS"],
+        "background_name":"Farmer",
+        "feat":"Tough"
+    },
+    "guard" : {
+        "primary_ability": ["STR", "INT", "WIS"],
+        "background_name":"Guard",
+        "feat":"Alert"
+    },
+    "guide" : {
+        "primary_ability": ["DEX", "CON", "WIS"],
+        "background_name":"Guide",
+        "feat":"Magic Initiate (Druid)"
+    },
+    "hermit" : {
+        "primary_ability": ["CON", "WIS", "CHA"],
+        "background_name":"Hermit",
+        "feat":"Healer"
+    },
+    "merchant" : {
+        "primary_ability": ["CON", "INT", "CHA"],
+        "background_name":"Merchant",
+        "feat":"Lucky"
+    },
+    "noble" : {
+        "primary_ability": ["STR", "INT", "CHA"],
+        "background_name":"Noble",
+        "feat":"Skilled"
+    },
+    "sage" : {
+        "primary_ability": ["CON", "INT", "WIS"],
+        "background_name":"Sage",
+        "feat":"Magic Initiate (Wizard)"
+    },
+    "sailor" : {
+        "primary_ability": ["STR", "DEX", "WIS"],
+        "background_name":"Sailor",
+        "feat":"Tavern Brawler"
+    },
+    "scribe" : {
+        "primary_ability": ["DEX", "INT", "WIS"],
+        "background_name":"Scribe",
+        "feat":"Skilled"
+    },
+    "soldier" : {
+        "primary_ability": ["STR", "DEX", "CON"],
+        "background_name":"Soldier",
+        "feat":"Savage Attacker"
+    },
+    "wayfarer" : {
+        "primary_ability": ["DEX", "WIS", "CHA"],
+        "background_name":"Wayfarer",
+        "feat":"Lucky"
     }
 }

@@ -1,11 +1,17 @@
-import os, json, random
+import os, json, random, sys
 from InquirerPy import inquirer
 from InquirerPy.base.control import Choice
 
 def setup_hero_class(hero, filename="data/dnd/classes.json", **kwargs):
-    filepath = os.path.abspath(filename)
-    with open(filepath, "r") as file:
-        class_list = json.load(file)
+    try:
+        filepath = os.path.abspath(filename)
+        with open(filepath, "r") as file:
+            class_list = json.load(file)
+    except Exception as e:
+        print('An Error Ocurred when trying to load Class Data:')
+        print(e)
+        print('We\'re sorry, Exiting Application Now.')
+        sys.exit(1)
 
     # Ask for Choice, Random Array or Standard Array
     choice = inquirer.select(

@@ -1,18 +1,54 @@
 {
+    "artificer" : {
+        "class_name":"Artificer",
+        "primary_ability": ["INT"]
+    },
     "barbarian" : {
         "class_name":"Barbarian",
-        "hit_dice": 12,
-        "primary_ability": "STR",
-        "saving_throw_proficiencies":["STR", "CON"],
-        "skill_proficiencies": {
-            "count": 2,
-            "options":["ANIMAL_HANDLING", "ATHLETICS", "INTIMIDATION", "NATURE", "PERCEPTION", "SURVIVAL"]
-        },
-        "weapon_proficiencies":["SIMPLE", "MARTIAL"],
-        "armor_training":["LIGHT", "MEDIUM", "SHIELDS"],
-        "starting_equipment": {
-            "count": 1,
-            "options":[["Greataxe", "4 Handaxes", "Explorer's Pack", "15GP"], ["75GP"]]
-        }
+        "primary_ability": ["STR"]
+    },
+    "bard" : {
+        "class_name":"Bard",
+        "primary_ability": ["CHA"]
+    },
+    "cleric" : {
+        "class_name":"Cleric",
+        "primary_ability": ["WIS"]
+    },
+    "druid" : {
+        "class_name":"Druid",
+        "primary_ability": ["WIS"]
+    },
+    "fighter" : {
+        "class_name":"Fighter",
+        "primary_ability": ["STR", "DEX"]
+    },
+    "monk" : {
+        "class_name":"Monk",
+        "primary_ability": ["DEX", "WIS"]
+    },
+    "paladin" : {
+        "class_name":"Paladin",
+        "primary_ability": ["STR", "CHA"]
+    },
+    "ranger" : {
+        "class_name":"Ranger",
+        "primary_ability": ["DEX", "WIS"]
+    },
+    "rogue" : {
+        "class_name":"Rogue",
+        "primary_ability": ["DEX"]
+    },
+    "sorcerer" : {
+        "class_name":"Sorcerer",
+        "primary_ability": ["CHA"]
+    },
+    "warlock" : {
+        "class_name":"Warlock",
+        "primary_ability": ["CHA"]
+    },
+    "wizard" : {
+        "class_name":"Wizard",
+        "primary_ability": ["INT"]
     }
 }
