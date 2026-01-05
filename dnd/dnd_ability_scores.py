@@ -4,7 +4,7 @@ from InquirerPy.base.control import Choice
 
 from dnd_consts import Abilities
 
-def generate_hero_ability_scores():
+def generate_hero_ability_scores(guided=True, **kwargs):
     # Ask for Choice, Random Array or Standard Array
     choice = inquirer.select(
         message="Would you like to use the standard stat array, or generate one with the 4d6 drop lowest method?",

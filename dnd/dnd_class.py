@@ -33,9 +33,10 @@ def select_hero_class(guided=True):
 
         # Get Class or Randomize
         if choice:
+            class_choices = list(map(lambda x: Choice(value=x, name=x.name), class_list))
             dnd_class = inquirer.select(
                 message="Please choose a class",
-                choices=list(map(lambda x: Choice(value=x, name=x.name), class_list)),
+                choices=class_choices,
             ).execute()
         else:
             dnd_class = get_random_class(class_list)

@@ -27,3 +27,7 @@ class DndHero():
     # Describes Character based on properties
     def self_one_liner(self):
         pass
+
+    # Don't forget to get your starting equipment etc...
+    def character_continue_reminder_text(self):
+        pass
