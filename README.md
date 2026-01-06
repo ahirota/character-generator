@@ -2,12 +2,13 @@
 Small Python Command-Line tool to generate a few options for your next character.
 
 Currently supported themes/games:
+- Random Fantasy Name
 - Dungeons and Dragons
 
 ## Features
 Uses the `InquirerPy` package to drive an interactive series of command-line prompts.
 
-Also uses the `PrettyTable` package to ad 
+Also uses the `PrettyTable` package to format the Ability Scores Table
 
 ### Name Generator
 Reads from a JSON File and randomly selects a first name and last name from the list. Additional parameters can be chosen to filter and narrow down a name.
@@ -56,6 +57,7 @@ Feel free to reach out to me:
 - [x] Class Picker/Generator
 - [x] Origin Picker/Generator
 - [x] Feat Picker/Generator
+- [x] Submit to BootDev for Project Completion - This is the MVP
 - [ ] Add DnD Hero "One Line Descriptor" based on character choices
 - [ ] Add additional parameters for filtering and generating a name
 - [ ] Additional Character Generators? Maybe one less demanding LOL
