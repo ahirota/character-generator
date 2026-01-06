@@ -16,19 +16,19 @@ class DndHero():
 
     def __repr__(self):
         name = self.name
-        sep = "-------------"
         ancestry = f"{self.origin["ancestry"]["optional_type"]} " if "optional_type" in self.origin["ancestry"] else ""
         sub_line = f"{self.alignment_to_string()} {ancestry}{self.origin["ancestry"]["ancestry_name"]} {self.dnd_class["class_name"]}"
+        main_line = f"{name} | {sub_line}"
         ability_score_title = "Ability Scores"
 
         ability_scores = PrettyTable()
         for score,val in self.ability_scores.items():
             ability_scores.add_column(score, [val])
 
-        background = f"Background: {self.origin["background"]["background_name"]} | Starting Feat: {self.origin["background"]["feat"]}"
+        background = f"Background: {self.origin["background"]["background_name"]} | Origin Feat: {self.origin["background"]["feat"]}"
         traits = f"Traits: {", ".join(self.origin["ancestry"]["traits"])}"
 
-        return "\n".join([name,sep,sub_line,sep,ability_score_title,ability_scores.get_string(),background,traits])
+        return "\n".join([main_line,"",ability_score_title,ability_scores.get_string(),"",background,traits])
 
     # Populate Self
     def populate_self(self, guided_flag=True, smart_flag=False):
@@ -50,4 +50,6 @@ class DndHero():
 
     # Don't forget to get your starting equipment etc...
     def character_continue_reminder_text(self):
-        return """Hopefully this helps you get set up. Don't forget to choose your starting equipment, add your ability score bonuses, and choose any extra options your feats/origins give you. Good luck and Happy Playing!"""
+        return """Hopefully this helps you get set up.
+Don't forget to choose your starting equipment, add your ability score bonuses, and choose any extra options your feats/origins give you.
+Good luck and Happy Playing!"""

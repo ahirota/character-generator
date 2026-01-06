@@ -7,6 +7,8 @@ Currently supported themes/games:
 ## Features
 Uses the `InquirerPy` package to drive an interactive series of command-line prompts.
 
+Also uses the `PrettyTable` package to ad 
+
 ### Name Generator
 Reads from a JSON File and randomly selects a first name and last name from the list. Additional parameters can be chosen to filter and narrow down a name.
 
@@ -14,11 +16,18 @@ Reads from a JSON File and randomly selects a first name and last name from the 
 Utilizing JSON Files, the DnD Generator will output a few options for your next character with a few key details. Options for generating a "smart" base stat array are also available.
 
 Character details will be formatted as below, and hopefully this can serve as a jumping off point for your next DnD Hero
-`{NAME} | Level 1 {ANCESTRY_OPTION}{ANCESTRY} {CLASS}, with the {ORIGIN} Background.`
 ```
-| Base Stats | STR | DEX | CON | INT | WIS | CHA |
-|------------|-----|-----|-----|-----|-----|-----|
-|            |     |     |     |     |     |     |
+{NAME} | {ALIGNMENT} {ANCESTRY SUBTYPE} {ANCESTRY} {CLASS}
+
+Ability Scores
++-----+-----+-----+-----+-----+-----+
+| STR | DEX | CON | INT | WIS | CHA |
++-----+-----+-----+-----+-----+-----+
+|{STR}|{DEX}|{CON}|{INT}|{WIS}|{CHA}|
++-----+-----+-----+-----+-----+-----+
+
+Background: {BACKGROUND_NAME} | Origin Feat: {BACKGROUND_FEAT}
+Traits: {ANCESTRY_TRAITS}
 ```
 
 ## Running this Project

@@ -23,11 +23,14 @@ def main():
         ],
     ).execute()
 
+    # Init Here, Override later if necessary
+    ending_message = "Thanks for using Character Generator!"
+
     # Generator type control block
     # Random Name Generator
     if (generator_type == 0):
         name = generate_random_name()
-        print(f"Here's your random fantasy name:\n\n")
+        print(f"Here's your random fantasy name:\n")
         separator = "+-" + "".join(["-" for char in range(len(name))]) + "-+"
         print(separator)
         print(f"| {name} |")
@@ -63,7 +66,7 @@ def main():
             else:
                 name = generate_random_name()
 
-            print(f"Okay {name}, let's get you set up.")
+            print(f"\nOkay {name}, let's get you set up.\n")
             hero = DndHero(name)
             hero.populate_self(guided_flag=True, smart_flag=False)
 
@@ -77,13 +80,13 @@ def main():
                     message="How many characters would you like to generate (maximum 10 characters)?",
                     min_allowed=1,
                     max_allowed=10,
+                    default=3,
                     validate=EmptyInputValidator(),
                 ).execute()
 
             # Smart Flag Check, Will weight choices towards synergistic options
-            smart_flag = inquirer.confirm(message=f"Do you want {'your character' if setup_flag == 1 else 'these characters'} built smartly?\nSmart characters will be weighted towards syngeristic options.", default=True).execute()
-            print(f"Generating {character_gen_count} character(s).")
-
+            smart_flag = inquirer.confirm(message=f"Do you want {'your character' if setup_flag == 1 else 'these characters'} built smartly? Smart characters will be weighted towards syngeristic options.", default=True).execute()
+            print(f"\nGenerating {character_gen_count} character(s).\n")
 
             # Save hero options
             hero_options = []
@@ -105,17 +108,18 @@ def main():
                         message=f"Here's your options:",
                         choices=hero_choices,
                     ).execute()
-                    print(f"Here's the details for {hero_options[index].name}:")
-                    print(hero_options[index])
+                    print(f"\nHere's the details for {hero_options[index].name}:\n-------------------------")
+                    print(f"\n{hero_options[index]}\n")
                     chosen = inquirer.confirm(message="Choose this character?", default=True).execute()
             
             hero = hero_options[chosen_hero_index]
 
         # Display Created/Chosen Hero Representation
-        print("Here is you next DnD Hero")
+        print("\nHere is you next DnD Hero")
         print("-------------------------\n")
         print(hero)
-        print(hero.character_continue_reminder_text())
+
+        ending_message = hero.character_continue_reminder_text()
 
     # Invalid generator option 
     else:
@@ -124,7 +128,8 @@ def main():
         sys.exit(1)
 
     print("\n-------------------------")
-    print("Thanks for using Character Generator!")
+    print(ending_message)
+    print("-------------------------")
 
   
 if __name__ == "__main__":

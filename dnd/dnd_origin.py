@@ -48,8 +48,10 @@ def select_hero_background(background_dict, **kwargs):
         # Choose Background or Randomize
         if (choice == 0):
             verbose_flag = inquirer.confirm(message=f"Do you want a detailed overview of these options?", default=False).execute()
-            if verbose_flag: print(f"You are a {kwargs["class"]} and your {"Primary Abilities are" if len(kwargs["stat_filter"]) > 1 else "Primary Ability is"} {kwargs["stat_filter"]}")
-            background_choices = list(map(lambda x: Choice(value=x, name=f"{x["background_name"]}{f" with Feat: {x["feat"]}\nPairs well with characters that have these primary abilities: {x["primary_ability"]}" if verbose_flag else ""}"), background_dict))
+            if verbose_flag: print(f"You are a {kwargs["class"]} and your {f"Primary Abilities are {", ".join(kwargs["stat_filter"])}" if len(kwargs["stat_filter"]) > 1 else f"Primary Ability is {kwargs["stat_filter"][0]}"}.")
+            background_choices = []
+            for k,v in background_dict.items():
+                background_choices.append(Choice(value=v, name=f"{v["background_name"]}{f" with Feat: {v["feat"]} (Pairs well with characters that have these primary abilities: {v["primary_ability"]})" if verbose_flag else ""}"))
             dnd_background = inquirer.select(
                 message="Please choose a background:",
                 choices=background_choices,
@@ -91,7 +93,9 @@ def select_hero_ancestry(ancestry_dict, **kwargs):
 
         # Get Ancestry or Randomize
         if (choice == 0):
-            ancestry_choices = list(map(lambda x: Choice(value=x, name=f"{x["ancestry_name"]} with Feat: {x["feat"]}\nPairs well with characters"), ancestry_dict))
+            ancestry_choices = []
+            for k,v in ancestry_dict.items():
+                ancestry_choices.append(Choice(value=v, name=v["ancestry_name"]))
             
             dnd_ancestry = inquirer.select(
                 message="Please choose an Ancestry",
@@ -100,7 +104,7 @@ def select_hero_ancestry(ancestry_dict, **kwargs):
 
             # If Subtype Found, Prompt User to Select One
             if "optional_type" in dnd_ancestry:
-                print("Your Ancestry has a special subtype.")
+                print("\nYour Ancestry has a special subtype.\n")
                 dnd_ancestry_subtype = inquirer.select(
                     message="Please choose one:",
                     choices=dnd_ancestry["optional_type"],

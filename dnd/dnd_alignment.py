@@ -10,8 +10,8 @@ def select_hero_alignment(**kwargs):
             message="How would you like to choose your Alignment?",
             choices=[
                 Choice(value=0, name="I'll pick."),
-                Choice(value=1, name="Give me a random choice that matches my class"),
-                Choice(value=2, name="Completely Random."),
+                Choice(value=1, name="Give me a socially acceptable random choice (Weighted against 'Evil' alignment)."),
+                Choice(value=2, name="Give me a completely random choice."),
             ],
         ).execute()
 
@@ -21,9 +21,9 @@ def select_hero_alignment(**kwargs):
                 message="Please choose an ethical alignment.",
                 choices=e_choices,
             ).execute()
-            m_choices = list(map(lambda x: Choice(value=x, name=x.capitalize() if x is not "NEUTRAL" else f"{x.capitalize()} (This will result in True Neutral)"), ALIGNMENTS["MORAL"]))
+            m_choices = list(map(lambda x: Choice(value=x, name=x.capitalize() if ethical is not "NEUTRAL" else f"{x.capitalize()} (This will result in True Neutral)"), ALIGNMENTS["MORAL"]))
             moral = inquirer.select(
-                message="Please choose a moral alignment.\n(Please note that it is generally socially unacceptable to play an 'Evil' character.\nConsult your play group if you wish to select that alignment.",
+                message="Please choose a moral alignment. (Please note that it is generally socially unacceptable to play an 'Evil' character. Consult your play group if you wish to select that alignment.)",
                 choices=m_choices,
             ).execute()
 

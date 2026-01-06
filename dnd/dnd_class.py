@@ -26,8 +26,8 @@ def select_hero_class(**kwargs):
         choice = inquirer.select(
             message="Would you like to choose your class, or select one randomly?",
             choices=[
-                Choice(value=True, name="I'll choose."),
-                Choice(value=False, name="Random please."),
+                Choice(value=True, name="I'll choose my class"),
+                Choice(value=False, name="Select a random class for me."),
             ],
         ).execute()
 
@@ -37,7 +37,7 @@ def select_hero_class(**kwargs):
             for k,v in class_dict.items():
                 class_choices.append(Choice(value=k, name=v["class_name"]))
             key = inquirer.select(
-                message="Please choose a class",
+                message="Please choose a class:",
                 choices=class_choices,
             ).execute()
             dnd_class = class_dict[key]

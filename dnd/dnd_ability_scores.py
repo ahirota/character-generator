@@ -9,8 +9,6 @@ def set_hero_ability_scores(**kwargs):
     ability_scores = {}
     for stat in Abilities:
         ability_scores[stat.value] = 0
-
-    print(ability_scores)
         
     if (kwargs["guided"]):
         # Ask for Choice, Random Array or Standard Array
@@ -28,15 +26,15 @@ def set_hero_ability_scores(**kwargs):
         else:
             ability_score_array = get_rolled_array()
 
-        print(f"Your {"Standard Array" if choice else "Random Array"} is as follows:")
-        print(ability_score_array)
+        print(f"\nYour {"Standard Array" if choice else "Random Array"} is as follows:")
+        print(f"{ability_score_array}\n")
 
         choice = inquirer.select(
             message="How would you like to set your Ability Scores?",
             choices=[
                 Choice(value=0, name="I'll manually set them."),
                 Choice(value=1, name="Set them randomly with respect to my class."),
-                Choice(value=2, name="Completely Random."),
+                Choice(value=2, name="Set them completely randomly."),
             ],
         ).execute()
 
@@ -62,7 +60,6 @@ def set_hero_ability_scores(**kwargs):
 def set_random_scores(ability_score_dict, ability_score_array, **kwargs):
     if (kwargs["smart_flag"]):
         random.shuffle(kwargs["stat_filter"])
-        print(kwargs["stat_filter"])
         for stat in kwargs["stat_filter"]:
             ability_score_dict[stat] = max(ability_score_array)
             ability_score_array.remove(max(ability_score_array))
