@@ -1,7 +1,7 @@
 from dnd.dnd_class import select_hero_class
 from dnd.dnd_origin import select_hero_origin
 from dnd.dnd_ability_scores import set_hero_ability_scores
-
+from dnd.dnd_alignment import select_hero_alignment
 
 class DndHero():
     # Initialize Empty Hero Class Object
@@ -11,6 +11,10 @@ class DndHero():
         self.origin = {}
         self.ability_scores = {}
         self.alignment = tuple()
+
+    def __repr__(self):
+        name = self.name
+        sep = ""
 
     # Short Hand description with only Name, Ancestry, and Class
     def short_representation(self):
@@ -24,6 +28,7 @@ class DndHero():
         kwargs["class"] = self.dnd_class["class_name"]
         self.origin = select_hero_origin(**kwargs)
         self.ability_scores = set_hero_ability_scores(**kwargs)
+        self.alignment = select_hero_alignment(**kwargs)
 
     # Describes Character based on properties
     def self_one_liner(self):
