@@ -4,7 +4,7 @@ from InquirerPy.base.control import Choice
 
 from dnd.dnd_consts import Abilities
 
-def generate_hero_ability_scores(**kwargs):
+def set_hero_ability_scores(**kwargs):
     # Initialize Ability Score Dict
     ability_scores = {}
     for stat in Abilities:
@@ -38,6 +38,7 @@ def generate_hero_ability_scores(**kwargs):
             ],
         ).execute()
 
+        # Set Scores Manually
         if (choice == 0):
             # Loop through and assign 
             for key in ability_scores:
@@ -48,32 +49,27 @@ def generate_hero_ability_scores(**kwargs):
                 ability_scores[key] = ability_score_array[index]
                 del ability_score_array[index]
         else:
-            if (choice == 1):
-                for stat in random.shuffle(kwargs["stat_filter"]):
-                    ability_scores[stat] = max(ability_score_array)
-                    ability_score_array.remove(max(ability_score_array))
-
-            for key in ability_scores:
-                if (ability_scores[key] is not 0):
-                    continue
-                ability_scores[key] = random.choice(ability_score_array)
-                ability_score_array.remove(ability_scores[key])
-
+            if (choice == 1): kwargs["smart_flag"] = True
+            ability_scores = set_random_scores(ability_scores, ability_score_array, **kwargs)
     else:
         ability_score_array = random.choice([get_standard_array(), get_rolled_array()])
-
-        if (kwargs["smart_flag"]):
-            for stat in random.shuffle(kwargs["stat_filter"]):
-                ability_scores[stat] = max(ability_score_array)
-                ability_score_array.remove(max(ability_score_array))
-
-        for key in ability_scores:
-            if (ability_scores[key] is not 0):
-                continue
-            ability_scores[key] = random.choice(ability_score_array)
-            ability_score_array.remove(ability_scores[key])
+        ability_scores = set_random_scores(ability_scores, ability_score_array, **kwargs)
 
     return ability_scores
+
+def set_random_scores(ability_score_dict, ability_score_array, **kwargs):
+    if (kwargs["smart_flag"]):
+        for stat in random.shuffle(kwargs["stat_filter"]):
+            ability_score_dict[stat] = max(ability_score_array)
+            ability_score_array.remove(max(ability_score_array))
+
+    for key in ability_score_dict:
+        if (ability_score_dict[key] is not 0):
+            continue
+        ability_score_dict[key] = random.choice(ability_score_array)
+        ability_score_array.remove(ability_score_dict[key])
+
+    return ability_score_dict
 
 def get_standard_array():
     return [15, 14, 13, 12, 10, 8]

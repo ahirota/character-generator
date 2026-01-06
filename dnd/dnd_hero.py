@@ -1,6 +1,6 @@
 from dnd.dnd_class import select_hero_class
 from dnd.dnd_origin import select_hero_origin
-from dnd.dnd_ability_scores import generate_hero_ability_scores
+from dnd.dnd_ability_scores import set_hero_ability_scores
 
 
 class DndHero():
@@ -23,6 +23,7 @@ class DndHero():
         kwargs["stat_filter"] = self.dnd_class["primary_ability"]
         kwargs["class"] = self.dnd_class["class_name"]
         self.origin = select_hero_origin(**kwargs)
+        self.ability_scores = set_hero_ability_scores(**kwargs)
 
     # Describes Character based on properties
     def self_one_liner(self):
