@@ -8,7 +8,9 @@ def set_hero_ability_scores(**kwargs):
     # Initialize Ability Score Dict
     ability_scores = {}
     for stat in Abilities:
-        ability_scores[stat] = 0
+        ability_scores[stat.value] = 0
+
+    print(ability_scores)
         
     if (kwargs["guided"]):
         # Ask for Choice, Random Array or Standard Array
@@ -59,7 +61,9 @@ def set_hero_ability_scores(**kwargs):
 
 def set_random_scores(ability_score_dict, ability_score_array, **kwargs):
     if (kwargs["smart_flag"]):
-        for stat in random.shuffle(kwargs["stat_filter"]):
+        random.shuffle(kwargs["stat_filter"])
+        print(kwargs["stat_filter"])
+        for stat in kwargs["stat_filter"]:
             ability_score_dict[stat] = max(ability_score_array)
             ability_score_array.remove(max(ability_score_array))
 

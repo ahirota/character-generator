@@ -79,18 +79,18 @@ def main():
                     max_allowed=10,
                     validate=EmptyInputValidator(),
                 ).execute()
-                print(f"Generating {character_gen_count} character(s).")
-
 
             # Smart Flag Check, Will weight choices towards synergistic options
             smart_flag = inquirer.confirm(message=f"Do you want {'your character' if setup_flag == 1 else 'these characters'} built smartly?\nSmart characters will be weighted towards syngeristic options.", default=True).execute()
-            
+            print(f"Generating {character_gen_count} character(s).")
+
+
             # Save hero options
             hero_options = []
             chosen_hero_index = 0
 
             # Start Generator Loop
-            for i in range(character_gen_count):
+            for i in range(int(character_gen_count)):
                 name = generate_random_name()
                 hero = DndHero(name)
                 hero.populate_self(guided_flag=False, smart_flag=smart_flag)
@@ -113,8 +113,9 @@ def main():
 
         # Display Created/Chosen Hero Representation
         print("Here is you next DnD Hero")
-        print("-------------------------\n\n")
+        print("-------------------------\n")
         print(hero)
+        print(hero.character_continue_reminder_text())
 
     # Invalid generator option 
     else:
@@ -122,7 +123,7 @@ def main():
         print("Exiting program")
         sys.exit(1)
 
-    print("\n\n-------------------------")
+    print("\n-------------------------")
     print("Thanks for using Character Generator!")
 
   

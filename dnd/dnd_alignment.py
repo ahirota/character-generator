@@ -16,18 +16,18 @@ def select_hero_alignment(**kwargs):
         ).execute()
 
         if (choice == 0):
-            e_choices = list(map(lambda x: Choice(value=x, name=x.lower()), ALIGNMENTS["ETHICAL"]))
+            e_choices = list(map(lambda x: Choice(value=x, name=x.capitalize()), ALIGNMENTS["ETHICAL"]))
             ethical = inquirer.select(
                 message="Please choose an ethical alignment.",
                 choices=e_choices,
             ).execute()
-            m_choices = list(map(lambda x: Choice(value=x, name=x.lower() if x is not "NEUTRAL" else f"{x.lower()} (This will result in True Neutral)"), ALIGNMENTS["MORAL"]))
+            m_choices = list(map(lambda x: Choice(value=x, name=x.capitalize() if x is not "NEUTRAL" else f"{x.capitalize()} (This will result in True Neutral)"), ALIGNMENTS["MORAL"]))
             moral = inquirer.select(
                 message="Please choose a moral alignment.\n(Please note that it is generally socially unacceptable to play an 'Evil' character.\nConsult your play group if you wish to select that alignment.",
                 choices=m_choices,
             ).execute()
 
-            alignment = tuple(ethical, moral)
+            alignment = (ethical, moral)
         else:
             if (choice == 1): kwargs["smart_flag"] = True
             alignment = get_random_alignment(**kwargs)
@@ -38,4 +38,4 @@ def select_hero_alignment(**kwargs):
 def get_random_alignment(**kwargs):
     ethical = random.choice(ALIGNMENTS["ETHICAL"])
     moral = random.choices(ALIGNMENTS["MORAL"], weights=MORAL_WEIGHTS)[0] if (kwargs["smart_flag"]) else random.choice(ALIGNMENTS["MORAL"])
-    return tuple(ethical, moral) 
+    return (ethical, moral) 

@@ -43,8 +43,10 @@ Feel free to reach out to me:
 - Discord: @neinhearted
 
 ## Road Map
-- [ ] Refactor for Smaller Scope (Was a bit ambitious the first go around)
-- [ ] Class Picker/Generator
-- [ ] Origin Picker/Generator
-- [ ] Feat Picker/Generator
+- [x] Refactor for Smaller Scope (Was a bit ambitious the first go around)
+- [x] Class Picker/Generator
+- [x] Origin Picker/Generator
+- [x] Feat Picker/Generator
+- [ ] Add DnD Hero "One Line Descriptor" based on character choices
 - [ ] Add additional parameters for filtering and generating a name
+- [ ] Additional Character Generators? Maybe one less demanding LOL
