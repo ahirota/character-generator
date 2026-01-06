@@ -5,6 +5,9 @@ Currently supported themes/games:
 - Random Fantasy Name
 - Dungeons and Dragons
 
+## Screenshot Example
+![Screenshot of Terminal showing use of Character Generator.](./docs/character-generator-ss.png)
+
 ## Features
 Uses the `InquirerPy` package to drive an interactive series of command-line prompts.
 
